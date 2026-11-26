@@ -4,6 +4,14 @@ Happ VPN client in the [Omarchy](https://omarchy.org) bar, as a Quickshell
 `bar-widget` plugin. An `H` mark sits in the bar: bar foreground while the
 tunnel is down, theme accent while it is up.
 
+![Demo: the H mark in the bar opens Happ's menu panel, connects, and the mark turns accent](demo.gif)
+
+This is a shell integration for **[Happ](https://github.com/Happ-proxy/happ-desktop)**
+(`happ-desktop`, the Xray-based proxy client) — not a VPN of its own. It does not
+ship, bundle or modify Happ: it reads the state of an already installed Happ and
+drives its own menu, so the app must be installed for the widget to do anything.
+Happ is a proxy client, not a VPN service: you supply your own servers.
+
 | Input | Action |
 |---|---|
 | Left click | Happ's own tray menu as a bar panel |
@@ -50,6 +58,8 @@ it from the drawer beside this widget, add it to `omarchy.tray`'s hidden list in
 | `BarWidget.qml` | the mark, the tunnel probe, the panel lifecycle |
 | `HappMenu.qml` | `KeyboardPanel` with the dbusmenu rows and submenu drill-down |
 | `i18n/en.json`, `i18n/ru.json` | tooltips and panel strings |
+| `demo.gif` | screen recording used in the header above |
+| `preview.png` | still screenshot for the marketplace listing |
 
 ## Tunnel detection
 
@@ -103,9 +113,23 @@ reliable signal.
 ## Requirements
 
 - Omarchy (Quickshell shell)
-- Happ 4.8 (`/opt/happ`, `happ` on `PATH`) for the menu and the launch action
+- **[Happ desktop](https://github.com/Happ-proxy/happ-desktop)** 4.8+ — the client this
+  widget drives (`/opt/happ`, `happ` on `PATH`). Arch: `happ-desktop-bin` from the AUR;
+  other platforms: the [releases page](https://github.com/Happ-proxy/happ-desktop/releases/latest)
+  (deb/rpm/pkg/macOS/Windows). The widget has nothing to show without it.
 - `pgrep` from procps for the process probe
+
+## How it talks to Happ
+
+| Signal | Source |
+|---|---|
+| Tunnel up/down | TUN device `happ-*` / `sing-box-tun` in `/sys/class/net`, or a `core/xray` / `tun2proxy-bin` process |
+| Menu rows and actions | Happ's `com.canonical.dbusmenu` at `/MenuBar`, over its StatusNotifierItem |
+
+Happ's StatusNotifierItem reports `Status = Active` and no connection flag, so the
+tunnel state comes from the kernel and the process table, not from the app.
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see `LICENSE`. Happ itself is a separate project under its own terms; this
+repository contains no Happ code or assets.
