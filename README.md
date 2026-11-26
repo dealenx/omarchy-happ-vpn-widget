@@ -4,6 +4,8 @@ Happ VPN client in the [Omarchy](https://omarchy.org) bar, as a Quickshell
 `bar-widget` plugin. An `H` mark sits in the bar: bar foreground while the
 tunnel is down, theme accent while it is up.
 
+![The Happ menu panel open under the bar: tunnel state, the selected server, Connect, Change server, Transport mode, Import from clipboard, Routing, Show window, Exit](screenshot.png)
+
 ![Demo: the H mark in the bar opens Happ's menu panel, connects, and the mark turns accent](demo.gif)
 
 This is a shell integration for **[Happ](https://github.com/Happ-proxy/happ-desktop)**
@@ -58,7 +60,8 @@ it from the drawer beside this widget, add it to `omarchy.tray`'s hidden list in
 | `BarWidget.qml` | the mark, the tunnel probe, the panel lifecycle |
 | `HappMenu.qml` | `KeyboardPanel` with the dbusmenu rows and submenu drill-down |
 | `i18n/en.json`, `i18n/ru.json` | tooltips and panel strings |
-| `demo.gif` | screen recording used in the header above |
+| `screenshot.png` | still of the open panel, shown above |
+| `demo.gif` | screen recording of the same, shown above |
 | `preview.png` | still screenshot for the marketplace listing |
 
 ## Tunnel detection
