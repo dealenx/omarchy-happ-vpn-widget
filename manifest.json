@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "id": "local.happ",
+  "id": "io.github.dealenx.happ-vpn",
   "name": "Happ",
   "version": "1.0.0",
-  "author": "local",
+  "author": "dealenx",
   "license": "MIT",
-  "description": "Happ VPN mark for the Omarchy bar: lights up while the Happ tunnel is up, click focuses or starts Happ.",
+  "description": "Happ VPN in the Omarchy bar: an H mark that lights up while the tunnel is up, with Happ's own tray menu one click away.",
   "kinds": [
     "bar-widget"
   ],
@@ -14,7 +14,7 @@
   },
   "barWidget": {
     "displayName": "Happ",
-    "description": "Happ tunnel state; click to open Happ.",
+    "description": "Happ tunnel state; left click opens Happ's menu, right click starts or raises it.",
     "category": "Network",
     "allowMultiple": false,
     "defaultSection": "right",

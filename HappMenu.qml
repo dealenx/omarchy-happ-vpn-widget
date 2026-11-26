@@ -11,7 +11,7 @@ import qs.Ui
 // without copying any of that logic here.
 Panel {
   id: root
-  moduleName: "local.happ"
+  moduleName: "io.github.dealenx.happ-vpn"
   manageIpc: false
 
   property var anchorItem: null

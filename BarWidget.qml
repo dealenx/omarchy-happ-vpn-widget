@@ -11,7 +11,7 @@ import qs.Ui
 // theme accent while it is up. Left click focuses Happ, or starts it.
 BarWidget {
   id: root
-  moduleName: "local.happ"
+  moduleName: "io.github.dealenx.happ-vpn"
 
   // Happ brings the tunnel up as a TUN device (happ-tun, happ-xray, happ-wg,
   // happ-default-tun, sing-box-tun) or, in proxy mode, as a core process with

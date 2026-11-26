@@ -18,9 +18,16 @@ Exit behave exactly as in the tray, submenus included.
 ## Install
 
 ```sh
-git clone <this-repo> ~/.config/omarchy/plugins/local.happ
-omarchy plugin validate ~/.config/omarchy/plugins/local.happ
-omarchy plugin enable local.happ --section right
+omarchy plugin add https://github.com/dealenx/omarchy-happ-vpn-widget.git --enable
+```
+
+Or by hand:
+
+```sh
+git clone https://github.com/dealenx/omarchy-happ-vpn-widget.git \
+  ~/.config/omarchy/plugins/io.github.dealenx.happ-vpn
+omarchy plugin validate ~/.config/omarchy/plugins/io.github.dealenx.happ-vpn
+omarchy plugin enable io.github.dealenx.happ-vpn --section right
 omarchy restart shell
 ```
 
