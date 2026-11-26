@@ -52,6 +52,21 @@ it from the drawer beside this widget, add it to `omarchy.tray`'s hidden list in
 { "id": "omarchy.tray", "hidden": ["Happ"] }
 ```
 
+## Remove
+
+```sh
+omarchy plugin remove io.github.dealenx.happ-vpn --yes
+omarchy restart shell
+```
+
+That deletes `~/.config/omarchy/plugins/io.github.dealenx.happ-vpn` and its
+entries in `~/.config/omarchy/shell.json`. To keep it installed but out of the
+bar, `omarchy plugin disable io.github.dealenx.happ-vpn` instead.
+
+Removal touches nothing outside that plugin folder. The widget writes no config
+of its own: the only state it can add to `shell.json` is the bar layout entry
+and the optional `"hidden": ["Happ"]` above, and it never edits Happ's files.
+
 ## Files
 
 | File | Role |
