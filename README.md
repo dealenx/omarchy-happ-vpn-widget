@@ -86,6 +86,19 @@ reliable signal.
 - Submenus keep one live `QsMenuOpener` per level: a child entry is owned by
   its parent opener's model, so collapsing to a single opener destroys the
   entry being displayed and the submenu comes up empty.
+- **Never launch Happ through the `happ` PATH symlink.** Its single-instance
+  guard (SingleApplication) keys its SysV shared-memory segment off the
+  application name, which Qt derives from `argv[0]`. `/opt/happ/bin/Happ`
+  gives `Happ`; `/usr/bin/happ` gives `happ` — two different keys, so both run
+  as full instances, each with its own window, its own server list and its own
+  tunnel state. The symptom is a second Happ window showing **no servers**.
+  The widget therefore launches with argv[0] pinned:
+  `exec -a Happ /opt/happ/bin/Happ`. Check for duplicates with
+  `ipcs -m | grep 0x` (one segment per instance) or
+  `ps -eo args | grep -E 'bin/Happ|^\s*happ\s*$'`.
+  The same trap applies to the autostart entry: `~/.config/autostart/Happ.desktop`
+  already uses the absolute path (`Exec=/opt/happ/bin/Happ --autostart`), so
+  keep it that way — changing it to `happ` splits the instance again.
 
 ## Requirements
 

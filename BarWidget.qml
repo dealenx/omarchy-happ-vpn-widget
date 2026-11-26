@@ -125,10 +125,16 @@ BarWidget {
         return
       }
       // Left opens Happ's own menu as a panel here; right starts or raises the
-      // app. Plain `happ`, not omarchy-launch-or-focus: that helper matches a
-      // window by pattern, and "Happ" also matches a terminal titled after it.
-      // A second Happ is a SingleApplication no-op that raises the running one.
-      if (buttonCode === Qt.RightButton) Util.execDetached("happ")
+      // app. Not omarchy-launch-or-focus: that helper matches a window by
+      // pattern, and "Happ" also matches a terminal titled after it.
+      //
+      // Absolute path with argv[0] pinned to `Happ`. Happ's single-instance
+      // guard keys its shared memory off argv[0], so launching through the
+      // `happ` PATH symlink starts a *second* full instance with its own
+      // window and its own server list — that is the "other window has no
+      // servers" symptom. Pinning argv[0] makes every launch join one instance
+      // and raise the existing window.
+      if (buttonCode === Qt.RightButton) Util.execDetached("exec -a Happ /opt/happ/bin/Happ")
       else root.toggle()
     }
   }
