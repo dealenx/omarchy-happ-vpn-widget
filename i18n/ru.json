@@ -1,0 +1,7 @@
+{
+  "bar.connected": "Happ: туннель поднят",
+  "bar.disconnected": "Happ: туннель опущен",
+  "panel.up": "Туннель поднят",
+  "panel.down": "Туннель опущен",
+  "panel.launch": "Запустить Happ"
+}

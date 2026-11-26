@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "local.happ",
+  "name": "Happ",
+  "version": "1.0.0",
+  "author": "local",
+  "license": "MIT",
+  "description": "Happ VPN mark for the Omarchy bar: lights up while the Happ tunnel is up, click focuses or starts Happ.",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Happ",
+    "description": "Happ tunnel state; click to open Happ.",
+    "category": "Network",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "refreshIntervalSec": 2
+    },
+    "schema": [
+      {
+        "key": "refreshIntervalSec",
+        "type": "integer",
+        "label": "Refresh interval (seconds)",
+        "min": 1,
+        "max": 60,
+        "step": 1,
+        "defaultValue": 2
+      }
+    ]
+  }
+}
