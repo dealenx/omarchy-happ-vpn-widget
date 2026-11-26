@@ -31,26 +31,24 @@ Exit behave exactly as in the tray, submenus included.
 omarchy plugin add https://github.com/dealenx/omarchy-happ-vpn-widget.git --enable
 ```
 
-Or by hand:
+That is the whole install: Omarchy clones the repository, validates it locally,
+then enables the widget in the bar's right section. Nothing else is needed —
+there is no build step, no service, no file to edit by hand.
 
-```sh
-git clone https://github.com/dealenx/omarchy-happ-vpn-widget.git \
-  ~/.config/omarchy/plugins/io.github.dealenx.happ-vpn
-omarchy plugin validate ~/.config/omarchy/plugins/io.github.dealenx.happ-vpn
-omarchy plugin enable io.github.dealenx.happ-vpn --section right
-omarchy restart shell
-```
+The only prerequisite is Happ itself, which the widget drives but never installs:
+see [Requirements](#requirements).
 
-Copy the folder; do not `stow` or symlink it. `omarchy plugin validate`
-rejects symlinks inside a plugin folder.
+### Optional: hide Happ's own tray tile
 
-Happ's own tray tile is a dark 22px bitmap that reads badly on the bar. To drop
-it from the drawer beside this widget, add it to `omarchy.tray`'s hidden list in
-`~/.config/omarchy/shell.json`:
+Happ's tray icon is a dark 22px bitmap that reads badly on the bar, and the `H`
+mark shows the same thing. To drop it from the tray drawer, add it to
+`omarchy.tray`'s hidden list in `~/.config/omarchy/shell.json`:
 
 ```json
 { "id": "omarchy.tray", "hidden": ["Happ"] }
 ```
+
+Skipping this leaves both icons visible; nothing breaks.
 
 ## Remove
 
